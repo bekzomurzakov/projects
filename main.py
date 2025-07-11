@@ -1,22 +1,37 @@
-class Cat:
-    name = None
-    age = None
-    isHappy = None
+class Building:
+    __year = None
+    __city = None
 
-    def set_data(self, name, age, isHappy):
-        self.name = name
-        self.age = age
-        self.isHappy = isHappy
+    def __init__(self, year, city):
+        self.year = year
+        self.city = city
 
-    def get_data(self):
-        print(self.name, "age", self.age, ". Happy:", self.isHappy)
-
-cat1 = Cat()
-cat1.set_data("Barsik", 3, True)
-
-cat2 = Cat()
-cat2.set_data("Жопен", 2, False)
+    def get_info(self):
+        print("Year:", self.year, ". City:", self.city)
 
 
-cat1.get_data()
-cat2.get_data()
+class School(Building):
+    pupils = 0
+
+    def __init__(self, pupils, year, city):
+        super(School, self).__init__(year, city)
+        self.pupils = pupils
+
+    def get_info(self):
+        super().get_info()
+        print("Pupils:", self.pupils)
+
+
+class House(Building):
+    pass
+
+class Shop(Building):
+    pass
+
+
+school = School(100, 2000, "Moscow")
+school.get_info()
+print(school.year)
+house = House(2000, "Moscow")
+shop = Shop(2000, "Moscow")
+shop.get_info()
